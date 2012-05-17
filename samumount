@@ -1,0 +1,4 @@
+#!/bin/bash
+# unmount sams computer
+
+sudo umount ~/network/sam/

@@ -1,0 +1,10 @@
+#!/bin/bash
+# select a random movie from the ~/Movies folder
+
+files=$(find /media/TVShows \( ! -regex '.*/\..*' \) -type f 2>/dev/null | tr -s ' ' '::')
+file_matrix=($files)
+num_files=${#file_matrix[*]}
+echo ""
+echo "${file_matrix[$((RANDOM%num_files))]}" | tr -s '::' ' ' | xargs -n1 -0 basename
+exit 0
+

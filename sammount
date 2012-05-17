@@ -1,0 +1,4 @@
+#!/bin/bash
+# mount sams pc
+
+sudo mount.cifs //sam-laptop/c /home/james/network/sam -o rw,user=james,domain=WORKGROUP,uid=james,gid=james

@@ -1,0 +1,8 @@
+#!/bin/bash
+# mount olivers pc
+# auth.smb file needs to be in the following format:
+# username=
+# password=
+
+sudo mount.cifs //$(nmblookup mafia | grep -v "querying" | awk '{print $1}')/e /home/james/network/oli/e -o rw,credentials=/etc/samba/auth.smb,domain=WORKGROUP,uid=james,gid=users
+sudo mount.cifs //$(nmblookup mafia | grep -v "querying" | awk '{print $1}')/d /home/james/network/oli/d -o rw,credentials=/etc/samba/auth.smb,domain=WORKGROUP,uid=james,gid=users

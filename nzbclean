@@ -1,0 +1,4 @@
+#!/bin/bash
+# move nzbfiles to get scanned and scan them
+
+mv ~/Downloads/*.nzb ~/nzbget/nzb; nzbget -D; sleep 2; nzbget -S

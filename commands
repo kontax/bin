@@ -1,0 +1,11 @@
+type - type of command
+which - path + filename
+strings - any strings in command
+hexdump - dump the hex of a file
+mkdir -p - mikir with parent directories
+cat /etc/*-release - linux distribution info
+lsb_release -a - find distribution info
+cfdisk - make usbkey bootable
+pacman -Rsn $(pacman -Qdtq) - remove all orphaned dependencies
+pacman -Rcs package - remove package + unneeded deps
+apropos

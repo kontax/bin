@@ -1,0 +1,12 @@
+#!/bin/bash
+# Screen keybindings
+
+echo
+echo '## Screen keybindings ##'
+echo '<F7> Detach from terminal'
+echo '<F8> Kill current window'
+echo '<F9> Rename existing window'
+echo '<F10> Create new window'
+echo '<F11> Move to prev window'
+echo '<F12> Move to next window'
+echo 

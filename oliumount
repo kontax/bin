@@ -1,0 +1,4 @@
+#!/bin/bash
+# unmount olivers computer
+
+sudo umount ~/network/oli/*

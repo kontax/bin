@@ -1,0 +1,3 @@
+#/bin/bash
+
+ls /media/Movies | shuf -n 1

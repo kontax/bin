@@ -1,0 +1,2 @@
+#!/bin/sh
+curl --get "http://xbmc:xbmc@localhost:8080/xbmcCmds/xbmcHttp?command=ExecBuiltIn&parameter=XBMC.updatelibrary(video)"

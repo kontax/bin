@@ -1,0 +1,4 @@
+#!/bin/bash
+# Remote VLC
+
+cvlc --extraintf=http --fullscreen --http-album-art --qt-start-minimized

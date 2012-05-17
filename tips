@@ -1,0 +1,30 @@
+Save the list of packages currently installed on your system.
+dpkg --get-selections | grep -v deinstall > SOME_FILE
+Then use the file to restore packages. 
+dpkg --set-selections < SOME_FILE ; sudo dselect
+
+curl -Is slashdot.org | egrep '^X-(F|B|L)' |cut -d \- -f 2
+
+rename -v 's/.*[s,S](\d{2}).*[e,E](\d{2}).*\.avi/The\ Sheild\ -\ $1x$2.avi/' *.avi
+
+sudo arp-scan -I wlan0 192.168.1.0/24
+
+sitepass() { echo -n "$@" |  md5sum | sha1sum | sha224sum | sha256sum | sha384sum | sha512sum | gzip - | strings -n 1 | tr -d "[:space:]"  | tr -s '[:print:]' | tr '!-~' 'P-~!-O' | rev | cut -b 2-11; history -d $(($HISTCMD-1)); }
+
+source ~/.bashrc
+
+sudo zcat /var/log/auth.log.*.gz | awk '/Failed password/&&!/for invalid user/{a[]++}/Failed password for invalid user/{a[* 1]++}END{for (i in a) printf %6st%sn, a[i], i|sort -n}'
+
+zcat /var/log/auth.log.*.gz | cat - /var/log/auth.log /var/log/auth.log | awk '/Invalid user/ {print 0;}' | sort | uniq -c | sort -n | less
+
+zcat /var/log/auth.log.*.gz | cat - /var/log/auth.log /var/log/auth.log | awk '/Invalid user/ {print ;}' | sort | uniq -c | sort -n | less
+
+zcat /var/log/auth.log.*.gz | cat - /var/log/auth.log /var/log/auth.log | awk '/Invalid user/ {print 0;}' | sort | uniq -c | sort -n | less
+
+find . -type f -exec chmod 644 {} \;
+
+find . -type f -name '*.*' | sed 's@.*/.*\.@.@' | sort |uniq
+
+alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h"
+
+alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
