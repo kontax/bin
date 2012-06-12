@@ -1,5 +1,6 @@
 #!/bin/bash
 # select a random movie from the ~/Movies folder
+# can also be just ls /media/TVShows | shuf -n 1 but fuck it....
 
 files=$(find /media/TVShows \( ! -regex '.*/\..*' \) -type f 2>/dev/null | tr -s ' ' '::')
 file_matrix=($files)
