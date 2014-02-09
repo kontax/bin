@@ -47,3 +47,5 @@ then
     setxkbmap ro
 fi
 
+## Java specific variables/functions
+export CLASSPATH=$HOME/javacourse:$HOME/javacourse/beginning_java:$CLASSPATH
