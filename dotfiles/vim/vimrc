@@ -85,3 +85,7 @@ set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 map <F9> :make<Return>:copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
+
+" This command inserts the current filename with no extention
+" to the cursor position when in insert mode
+inoremap \fn <C-R>=expand("%:t:r")<CR>
