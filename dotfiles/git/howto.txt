@@ -1,0 +1,1 @@
+See http://stackoverflow.com/a/18362082 for info on using netrc
