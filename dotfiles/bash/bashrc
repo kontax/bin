@@ -13,6 +13,7 @@ export HISTCONTROL=ignoreboth
 export PATH=$PATH:~/bin:/opt/android-sdk/platform-tools
 export TVShows=/media/TVShows
 export Movies=/media/Movies
+export CLASSPATH=.
 
 alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h"
 
@@ -47,5 +48,3 @@ then
     setxkbmap ro
 fi
 
-## Java specific variables/functions
-export CLASSPATH=$HOME/javacourse:$HOME/javacourse/beginning_java:$CLASSPATH
