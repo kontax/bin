@@ -42,6 +42,7 @@ set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 
 " UNCOMMENT TO USE
 set tabstop=4                    " Global tab width.
+set softtabstop=4                " Tab in insert mode
 set shiftwidth=4                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
 
@@ -89,3 +90,12 @@ map <F11> :cnext<Return>
 " This command inserts the current filename with no extention
 " to the cursor position when in insert mode
 inoremap \fn <C-R>=expand("%:t:r")<CR>
+
+" Execs a vimrc file if it's present in the working directory, and turn
+" off some commands that might be security issues.
+set exrc
+set secure
+
+" Set column 110 with a color to notify.
+set colorcolumn=110
+highlight ColorColumn ctermbg=green
