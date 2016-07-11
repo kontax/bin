@@ -10,7 +10,7 @@ PS1='[\u@\h \W]\$ '
 
 export EDITOR=vim
 export HISTCONTROL=ignoreboth
-export PATH=$PATH:~/bin:/opt/android-sdk/platform-tools
+export PATH=$PATH:~/bin:/opt/android-sdk/platform-tools:/usr/local/cuda/bin
 export TVShows=/media/TVShows
 export Movies=/media/Movies
 export CLASSPATH=.
@@ -28,8 +28,8 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 export PATH="/opt/e17/bin:$PATH"
-export PYTHONPATH=":$PYTHONPATH"
-export LD_LIBRARY_PATH="/opt/e17/lib:$LD_LIBRARY_PATH"
+export PYTHONPATH="/usr/local/lib/python2.7/dist-packages/:$PYTHONPATH"
+export LD_LIBRARY_PATH="/opt/e17/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 #alias startx="nohup startx & disown ; exit"
 alias disable_screensaver="xset -dpms; xset s off"

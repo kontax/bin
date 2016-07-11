@@ -1,1 +1,11 @@
-VBoxManage startvm {f8ee07fa-d07a-443e-adf4-fd6f3331de2c}
+echo "Starting VM remotely"
+ssh james@yakuza 'VBoxManage startvm "Windows-10-x64" --type headless'
+
+#echo -n "Username: "
+#read USER
+#echo -n "Password: "
+#read -s PASS
+
+source ~/.ssh/auth.mount
+
+xfreerdp +clipboard /bpp:32 /u:$username /p:$password /jpeg-quality:10 /w:1916 /h:1040 /t:"Windows-10-x64" /v:yakuza:5903
