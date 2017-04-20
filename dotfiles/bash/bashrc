@@ -46,9 +46,9 @@ HN="\e[$prod;$sum$M"
 CURRUSER=$(whoami)
 
 if [ "$CURRUSER" = "root" ]; then
-    PS1="$R\u$END@$HN\h $Y\w\n $END\$ "
+    PS1="$R\u$END@$HN\h $Y\w\n$END\$ "
 else
-    PS1="$G\u$END@$HN\h $Y\w\n $END\$ "
+    PS1="$G\u$END@$HN\h $Y\w\n$END\$ "
 fi
 
 # Clean up the variables
