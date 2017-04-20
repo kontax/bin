@@ -1,9 +1,78 @@
+##########################
+#    .bashrc script      #
+##########################
 
-# Check for an interactive session
-[ -z "$PS1" ] && return
+
+########
+# PS1
+########
+
+
+# Set the general colour variables
+B="\e[0;34m"
+G="\e[0;32m"
+Y="\e[0;33m"
+R="\e[0;31m"
+END="\e[m"
+
+# As the colour ranges from 0;30 to 1;36, I add up/multiply the 
+# letters of the hostname, and then mod those values to get a
+# 0/1 and 30-36 value for the colour. This will essentially
+# assign the same colour to a particular host, but differ between
+# hosts regularly enough to tell the difference.
+
+# Pull the hostname in order to colour it randomly
+host=$(hostname)
+sum=0
+prod=1
+
+# Loop through each letter, and sum/mult up the ascii values
+for x in $(echo $host | sed -e 's/\(.\)/\1\n/g'); do
+    num=$(echo $x | tr -d "\n" | od -An -t uC)
+    sum=$(($sum + $num))
+    prod=$(($prod * $num))
+done
+
+# Get the mod value here to assign it to a colour
+sum=$(($sum%7 + 30))
+prod=$(($prod%2))
+M="m"
+
+# Generate the colour code for the hostname
+HN="\e[$prod;$sum$M"
+
+
+# Also want to make the username red when root
+CURRUSER=$(whoami)
+
+if [ "$CURRUSER" = "root" ]; then
+    PS1="$R\u$END@$HN\h $Y\w\n $END\$ "
+else
+    PS1="$G\u$END@$HN\h $Y\w\n $END\$ "
+fi
+
+# Clean up the variables
+unset B
+unset G
+unset Y
+unset R
+unset END
+unset host
+unset sum
+unset prod
+unset M
+unset HN
+unset CURRUSER
+
+
+
+########
+# Old .bashrc - clean this up later
+########
+
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+#PS1='[\u@\h \W]\$ '
 
 ## Use vi style command line interface 
 #set -o vi
