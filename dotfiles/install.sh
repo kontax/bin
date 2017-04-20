@@ -3,6 +3,12 @@
 # install.sh
 # Small script used to install the dotfiles once the directory has been cloned
 
+#
+# Bash
+#
+
+ln -s ~/bin/dotfiles/bash/bashrc ~/.bashrc          # bashrc
+
 
 #
 # Vim
