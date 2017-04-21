@@ -30,7 +30,7 @@ prod=1
 for x in $(echo $host | sed -e 's/\(.\)/\1\n/g'); do
     num=$(echo $x | tr -d "\n" | od -An -t uC)
     sum=$(($sum + $num))
-    prod=$(($prod * $num))
+    prod=$(( ($prod * $num) + $sum))
 done
 
 # Get the mod value here to assign it to a colour

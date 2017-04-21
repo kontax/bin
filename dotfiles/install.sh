@@ -16,6 +16,7 @@ ln -s ~/bin/dotfiles/bash/bashrc ~/.bashrc          # bashrc
 
 ln -s ~/bin/dotfiles/vim/dot_vim ~/.vim             # Vim config directory
 ln -s ~/bin/dotfiles/vim/vimrc ~/.vimrc             # vimrc
+# Install colour scheme into correct folder
 
 
 #
