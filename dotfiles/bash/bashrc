@@ -4,6 +4,16 @@
 
 
 ########
+# Bash System Variables
+########
+
+export PATH=$PATH:~/bin:/opt/android-sdk/platform-tools
+export EDITOR=vim                                           # Use vim as the main editor
+export HISTCONTROL=ignoreboth                               # Ignore dups + commands starting w/ space
+
+
+
+########
 # PS1
 ########
 
@@ -56,54 +66,45 @@ unset B G Y R END host sum prod M HN CURRUSER
 
 
 
+
 ########
-# Old .bashrc - clean this up later
+# Aliases and modified commands
 ########
 
+# Place aliases into a separate ~/.bash_aliases folder
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
-alias ls='ls --color=auto'
-#PS1='[\u@\h \W]\$ '
 
-## Use vi style command line interface 
-#set -o vi
-
-export EDITOR=vim
-export HISTCONTROL=ignoreboth
-export PATH=$PATH:~/bin:/opt/android-sdk/platform-tools:/usr/local/cuda/bin
-export TVShows=/media/TVShows
-export Movies=/media/Movies
-export CLASSPATH=.
-
-alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h"
-
-alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
-
-export APIKEY=554a689c67ceb6c531763359ce6b8404
-
-# enable color support of ls and also add handy aliases
+# enable color support of ls
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
 fi
 
-export PATH="/opt/e17/bin:$PATH"
-export PYTHONPATH="/usr/local/lib/python2.7/dist-packages/:$PYTHONPATH"
-export LD_LIBRARY_PATH="/opt/e17/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-
-#alias startx="nohup startx & disown ; exit"
-alias disable_screensaver="xset -dpms; xset s off"
-
-alias steam='WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >/dev/null 2>&1 &'
-
-wiki() { dig +short txt "$*".wp.dg.cx; }
-
-#while sleep 10;do tput sc;tput cup 0 $(($(tput cols)-19));date '+%a %d/%m/%y %H:%M';tput rc;done &
-#while tput sc; tput cup 0 $(($(tput cols)-19));date '+%a %d/%m/%y %H:%M';tput rc; do sleep 1; done &
-
-function sopc() { (sp-sc $* 3908 8908 &>/dev/null &); sleep 10; wait $(smplayer http://localhost:8908/tv.asf); killall sp-sc; }
-
+# Set the keyboard layout for x-terminals
 if [ $TERM == "xterm" ] && [ -z $SSH_TTY ];
 then
     setxkbmap ro
 fi
 
+
+# Copy and move with progress bars
+alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h"
+alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
+
+alias disable_screensaver="xset -dpms; xset s off"
+wiki() { dig +short txt "$*".wp.dg.cx; }
+
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi

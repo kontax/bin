@@ -1,0 +1,10 @@
+#!/bin/bash
+# Script used for any specific aliases
+
+
+# Copy and move with progress bars
+alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h"
+alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
+
+alias disable_screensaver="xset -dpms; xset s off"
+wiki() { dig +short txt "$*".wp.dg.cx; }
