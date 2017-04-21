@@ -34,12 +34,12 @@ for x in $(echo $host | sed -e 's/\(.\)/\1\n/g'); do
 done
 
 # Get the mod value here to assign it to a colour
-sum=$(($sum%7 + 30))
-prod=$(($prod%2))
+prod=$(($prod%7 + 30))
+sum=$(($sum%2))
 M="m"
 
 # Generate the colour code for the hostname
-HN="\e[$prod;$sum$M"
+HN="\e[$sum;$prod$M"
 
 
 # Also want to make the username red when root
