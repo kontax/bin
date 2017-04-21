@@ -7,15 +7,16 @@
 # Bash
 #
 
-ln -s ~/bin/dotfiles/bash/bashrc ~/.bashrc          # bashrc
+ln -s ~/bin/dotfiles/bash/bashrc ~/.bashrc              # bashrc
+ln -s ~/bin/dotfiles/bash/bash_aliases ~/.bash_aliases  # bashrc
 
 
 #
 # Vim
 #
 
-ln -s ~/bin/dotfiles/vim/dot_vim ~/.vim             # Vim config directory
-ln -s ~/bin/dotfiles/vim/vimrc ~/.vimrc             # vimrc
+ln -s ~/bin/dotfiles/vim/dot_vim ~/.vim                 # Vim config directory
+ln -s ~/bin/dotfiles/vim/vimrc ~/.vimrc                 # vimrc
 # Install colour scheme into correct folder
 
 
