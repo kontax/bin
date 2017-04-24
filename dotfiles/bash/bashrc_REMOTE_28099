@@ -19,11 +19,11 @@ export HISTCONTROL=ignoreboth                               # Ignore dups + comm
 
 
 # Set the general colour variables
-B="\[\e[0;34m\]"
-G="\[\e[0;32m\]"
-Y="\[\e[0;33m\]"
-R="\[\e[0;31m\]"
-END="\[\e[m\]"
+B="\e[0;34m"
+G="\e[0;32m"
+Y="\e[0;33m"
+R="\e[0;31m"
+END="\e[m"
 
 # As the colour ranges from 0;30 to 1;36, I add up/multiply the 
 # letters of the hostname, and then mod those values to get a
@@ -49,7 +49,7 @@ prod=$(($prod%2))
 M="m"
 
 # Generate the colour code for the hostname
-HN="\[\e[$prod;$sum$M\]"
+HN="\e[$prod;$sum$M"
 
 
 # Also want to make the username red when root

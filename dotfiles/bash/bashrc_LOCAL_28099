@@ -1,0 +1,119 @@
+##########################
+#    .bashrc script      #
+##########################
+
+
+########
+# PS1
+########
+
+
+# Set the general colour variables
+B="\[\e[0;34m\]"
+G="\[\e[0;32m\]"
+Y="\[\e[0;33m\]"
+R="\[\e[0;31m\]"
+END="\[\e[m\]"
+
+# As the colour ranges from 0;30 to 1;36, I add up/multiply the 
+# letters of the hostname, and then mod those values to get a
+# 0/1 and 30-36 value for the colour. This will essentially
+# assign the same colour to a particular host, but differ between
+# hosts regularly enough to tell the difference.
+
+# Pull the hostname in order to colour it randomly
+host=$(hostname)
+sum=0
+prod=1
+
+# Loop through each letter, and sum/mult up the ascii values
+for x in $(echo $host | sed -e 's/\(.\)/\1\n/g'); do
+    num=$(echo $x | tr -d "\n" | od -An -t uC)
+    sum=$(($sum + $num))
+    prod=$(( ($prod * $num) + $sum))
+done
+
+# Get the mod value here to assign it to a colour
+prod=$(($prod%7 + 30))
+sum=$(($sum%2))
+M="m"
+
+# Generate the colour code for the hostname
+HN="\[\e[$sum;$prod$M\]"
+
+
+# Also want to make the username red when root
+CURRUSER=$(whoami)
+
+if [ "$CURRUSER" = "root" ]; then
+    PS1="$R\u$END@$HN\h $Y\w\n$END\$ "
+else
+    PS1="$G\u$END@$HN\h $Y\w\n$END\$ "
+fi
+
+# Clean up the variables
+unset B
+unset G
+unset Y
+unset R
+unset END
+unset host
+unset sum
+unset prod
+unset M
+unset HN
+unset CURRUSER
+
+
+
+########
+# Old .bashrc - clean this up later
+########
+
+
+alias ls='ls --color=auto'
+#PS1='[\u@\h \W]\$ '
+
+## Use vi style command line interface 
+#set -o vi
+
+export EDITOR=vim
+export HISTCONTROL=ignoreboth
+export PATH=$PATH:~/bin:/opt/android-sdk/platform-tools:/usr/local/cuda/bin
+export TVShows=/media/TVShows
+export Movies=/media/Movies
+export CLASSPATH=.
+
+alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h"
+
+alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
+
+export APIKEY=554a689c67ceb6c531763359ce6b8404
+
+# enable color support of ls and also add handy aliases
+if [ "$TERM" != "dumb" ]; then
+    eval "`dircolors -b`"
+    alias ls='ls --color=auto'
+fi
+
+export PATH="/opt/e17/bin:$PATH"
+export PYTHONPATH="/usr/local/lib/python2.7/dist-packages/:$PYTHONPATH"
+export LD_LIBRARY_PATH="/opt/e17/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+
+#alias startx="nohup startx & disown ; exit"
+alias disable_screensaver="xset -dpms; xset s off"
+
+alias steam='WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >/dev/null 2>&1 &'
+
+wiki() { dig +short txt "$*".wp.dg.cx; }
+
+#while sleep 10;do tput sc;tput cup 0 $(($(tput cols)-19));date '+%a %d/%m/%y %H:%M';tput rc;done &
+#while tput sc; tput cup 0 $(($(tput cols)-19));date '+%a %d/%m/%y %H:%M';tput rc; do sleep 1; done &
+
+function sopc() { (sp-sc $* 3908 8908 &>/dev/null &); sleep 10; wait $(smplayer http://localhost:8908/tv.asf); killall sp-sc; }
+
+if [ $TERM == "xterm" ] && [ -z $SSH_TTY ];
+then
+    setxkbmap ro
+fi
+

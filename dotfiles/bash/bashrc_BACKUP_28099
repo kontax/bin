@@ -49,7 +49,11 @@ prod=$(($prod%2))
 M="m"
 
 # Generate the colour code for the hostname
-HN="\[\e[$prod;$sum$M\]"
+<<<<<<< HEAD
+HN="\[\e[$sum;$prod$M\]"
+=======
+HN="\e[$prod;$sum$M"
+>>>>>>> f0c7a2db2544f9c84c2e8759cad8eaf4228987c4
 
 
 # Also want to make the username red when root
