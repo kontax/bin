@@ -1,0 +1,5 @@
+# Set intel disassembly
+set disassembly intel
+
+# Display a line of assembly when stepping through
+display/i $pc
