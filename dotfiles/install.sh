@@ -7,22 +7,27 @@
 # Bash
 #
 
-ln -s ~/bin/dotfiles/bash/bashrc ~/.bashrc              # bashrc
-ln -s ~/bin/dotfiles/bash/bash_aliases ~/.bash_aliases  # bashrc
+ln -sf ~/bin/dotfiles/bash/bashrc ~/.bashrc              # bashrc
+ln -sf ~/bin/dotfiles/bash/bash_aliases ~/.bash_aliases  # bashrc
 
 
 #
 # Vim
 #
 
-ln -s ~/bin/dotfiles/vim/dot_vim ~/.vim                 # Vim config directory
-ln -s ~/bin/dotfiles/vim/vimrc ~/.vimrc                 # vimrc
+ln -sf ~/bin/dotfiles/vim/dot_vim ~/.vim                 # Vim config directory
+ln -sf ~/bin/dotfiles/vim/vimrc ~/.vimrc                 # vimrc
 # Install colour scheme into correct folder
 
 
 #
 # Git
 #
+ln -sf ~/bin/dotfiles/git/netrc.gpg ~/.netrc.gpg         # Git netrc
+git config --global credential.helper "netrc -f ~/.netrc.gpg -v -d"
+git config --global user.name "James Coulson"
+git config --global user.email "coulsonj@gmail.com"
+echo "Git setup. Install GPG keys to use"
 
 ## Add hooks here for ctags
 
