@@ -1,0 +1,47 @@
+#!/bin/bash
+# vbox
+# Remotely starts a VM on yakuza (ignored if it's already running), and 
+# connects to it via remote desktop.
+
+echo "Remotely connect to a virtual machine"
+echo
+
+unset options i
+
+for o in $(ssh james@yakuza "vboxmanage list vms" | awk '{ print $1 }' | sort);
+do
+    options[i++]="$o"
+done
+
+echo "Choose a VM to start:"
+select opt in "${options[@]}" "Quit";
+do
+    case $opt in
+        *\")
+            echo "Chosen $opt"
+            break
+            ;;
+        "Quit")
+            echo "Quitting"
+            break
+            ;;
+        *)
+            echo "Invalid selection"
+            ;;
+    esac
+done
+
+echo "Here we are $opt"
+
+port=$(ssh james@yakuza "vboxmanage showvminfo $opt" | grep "VRDE property: TCP/Ports" | awk '{ print $5 }' | sed 's/\"//g');
+echo "$opt: $port"
+
+echo "Starting VM remotely"
+ssh james@yakuza "VBoxManage startvm $opt --type headless"
+
+source ~/.ssh/auth.mount
+
+nohup xfreerdp +clipboard /bpp:32 /u:$username /p:$password /jpeg-quality:10 /w:1916 /h:1040 /t:"$opt" /v:yakuza:$port > /dev/null 2>&1 &
+#set -x
+#xfreerdp +clipboard /bpp:32 /u:$username /p:$password /jpeg-quality:10 /w:1916 /h:1040 /t:"$opt" /v:yakuza:$port
+#set +x
