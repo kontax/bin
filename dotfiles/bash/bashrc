@@ -11,6 +11,16 @@ export PATH=$PATH:~/bin:/opt/android-sdk/platform-tools
 export EDITOR=vim                                           # Use vim as the main editor
 export HISTCONTROL=ignoreboth                               # Ignore dups + commands starting w/ space
 
+# Get the machine type
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
 
 
 ########
@@ -37,8 +47,10 @@ sum=0
 prod=1
 
 # Loop through each letter, and sum/mult up the ascii values
-for x in $(echo $host | sed -e 's/\(.\)/\1\n/g'); do
-    num=$(echo $x | tr -d "\n" | od -An -t uC)
+#for x in $(echo $host | sed -e 's/\(.\)/\1\n/g'); do
+for x in $(seq 1 ${#host}); do
+    #num=$(echo $x | tr -d "\n" | od -An -t uC)
+    num=$(echo ${host:x-1:1} | tr -d "\n" | od -An -t uC)
     sum=$(($sum + $num))
     prod=$(($prod * $num))
 done
@@ -78,7 +90,7 @@ fi
 
 
 # enable color support of ls
-if [ "$TERM" != "dumb" ]; then
+if [ "$TERM" != "dumb" ] && [ "$machine" != "Mac" ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
 fi
