@@ -108,3 +108,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+PATH=$PATH:/home/james/010editor;
+export PATH; # ADDED BY INSTALLER - DO NOT EDIT OR DELETE THIS COMMENT - 87FF8EFC-483D-BCAA-D67D-735CF60410D1 CA09C5CA-57FF-0C90-E1BE-D36E85963E57

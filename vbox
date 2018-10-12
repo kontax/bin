@@ -41,7 +41,7 @@ ssh james@yakuza "VBoxManage startvm $opt --type headless"
 
 source ~/.ssh/auth.mount
 
-nohup xfreerdp +clipboard /bpp:32 /u:$username /p:$password /jpeg-quality:10 /w:1916 /h:1040 /t:"$opt" /v:yakuza:$port > /dev/null 2>&1 &
+nohup xfreerdp +clipboard /bpp:32 /u:$username /p:$password /w:1916 /h:1040 /t:"$opt" /v:yakuza:$port > /dev/null 2>&1 &
 #set -x
 #xfreerdp +clipboard /bpp:32 /u:$username /p:$password /jpeg-quality:10 /w:1916 /h:1040 /t:"$opt" /v:yakuza:$port
 #set +x

@@ -3,3 +3,6 @@ set disassembly intel
 
 # Display a line of assembly when stepping through
 display/i $pc
+
+# Load pwndbg (figure out a way to only load if exists, otherwise error
+source /usr/share/pwndbg/gdbinit.py
