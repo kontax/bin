@@ -8,4 +8,4 @@ ssh james@yakuza 'VBoxManage startvm "Windows-10-x64" --type headless'
 
 source ~/.ssh/auth.mount
 
-xfreerdp +clipboard /bpp:32 /u:$username /p:$password /jpeg-quality:10 /w:1916 /h:1040 /t:"Windows-10-x64" /v:yakuza:5903
+xfreerdp +clipboard /bpp:32 /u:$username /p:$password /w:1916 /h:1040 /t:"Windows-10-x64" /v:yakuza:5903
